@@ -1,0 +1,25 @@
+{
+  "name": "ghost-mode-service",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Ghost Mode indexer, prover, relayer and ASP service",
+  "scripts": {
+    "compile:circuit": "tsx src/zk/compile.ts",
+    "start": "tsx src/server.ts",
+    "e2e": "tsx test/e2e.ts"
+  },
+  "dependencies": {
+    "@aztec/bb.js": "5.0.0-nightly.20260522",
+    "@noir-lang/noir_js": "1.0.0-beta.22",
+    "@noir-lang/noir_wasm": "1.0.0-beta.22",
+    "poseidon-lite": "0.3.0",
+    "viem": "2.51.3"
+  },
+  "devDependencies": {
+    "@types/node": "24.12.2",
+    "esbuild": "0.28.2",
+    "tsx": "4.23.12",
+    "typescript": "5.9.3"
+  }
+}

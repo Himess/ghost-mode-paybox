@@ -1,0 +1,19 @@
+node_modules/
+dist/
+!plugin/dist/
+!service/src/verify/dist/
+target/
+!circuits/transact/target/
+out/
+cache/
+broadcast/
+.env
+*.log
+.wincheck/
+
+# Operator-only helper (reads the relayer key from ../.secrets)
+fund-paybox.cmd
+
+# Ghost Mode service runtime state: encrypted key backups, prepared spends, jobs (may hold witnesses)
+service/data/*
+!service/data/ofac-eth.txt

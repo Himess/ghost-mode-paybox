@@ -1,0 +1,5 @@
+* text=auto eol=lf
+# The submitted bundle and circuit artifacts must stay byte-identical (sha256 is published).
+plugin/dist/plugin.mjs -text
+circuits/transact/target/** -text
+*.bin binary

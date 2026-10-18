@@ -1,0 +1,9 @@
+[package]
+name = "transact"
+type = "bin"
+authors = ["Himess"]
+compiler_version = ">=1.0.0"
+
+[dependencies]
+poseidon = { path = "../lib/poseidon-0.4.0" }
+keccak256 = { path = "../lib/keccak256-0.1.3" }
