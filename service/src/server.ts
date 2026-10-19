@@ -154,14 +154,18 @@ const server = createServer((req, res) => {
   });
 });
 
+let loopFailures = 0;
 async function loop() {
   try {
     await sync(true);
     await refreshAsp();
+    loopFailures = 0;
   } catch (err) {
-    console.error(`[loop] ${(err as Error).message.split("\n")[0]}`);
+    loopFailures++;
+    console.error(`[loop] ${(err as Error).message.split("\n")[0]}${loopFailures > 1 ? ` (failure ${loopFailures}, backing off)` : ""}`);
   }
-  setTimeout(loop, 5_000);
+  // Back off on repeated failures so a struggling RPC is not hammered into rate limits (5 s up to 2 min).
+  setTimeout(loop, Math.min(5_000 * 2 ** Math.min(loopFailures, 5), 120_000));
 }
 
 server.listen(config.port, () => {
